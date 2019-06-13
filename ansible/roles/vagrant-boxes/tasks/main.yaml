@@ -1,0 +1,19 @@
+---
+- name: centos7
+  include: centos.yaml
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: ubuntu
+  include: ubuntu.yaml
+  when: ansible_facts['distribution'] == "Ubuntu"
+
+
+- name: create venv folder
+  file:
+    path: /venv
+    state: directory
+    group: vagrant
+    owner: vagrant
+
+- name: install virtualenv
+  command: virtualenv -ppython3 /venv

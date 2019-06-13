@@ -1,0 +1,17 @@
+[Unit]
+Description=Demo service unit
+After=multi-user.target
+;Conflicts=getty@tty1.service
+
+[Service]
+User=vagrant
+Type=simple
+PIDFile=/home/vagrant/demo.pid
+Restart=always
+ExecStart=/venv/bin/python /app/demo_daemon.py
+StandardInput=tty-force
+StandardOutput=syslog+console
+StandardError=syslog+console
+
+[Install]
+WantedBy=multi-user.target

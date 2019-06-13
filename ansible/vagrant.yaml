@@ -1,0 +1,7 @@
+---
+  - name: JCH Vagrant Daemon Example
+    hosts: all
+    become: yes
+    become_method: sudo
+    roles:
+      - vagrant-boxes

@@ -1,0 +1,25 @@
+version: '3'
+services:
+  sqs:
+    image: jchexpl/sqs
+    build:
+      context: ./docker/sqs
+    ports:
+      - 9324:9324
+  demodaemon:
+    image: jchexpl/daemon
+    build:
+      context: ./docker/daemon
+    volumes:
+      - ./src:/app
+    environment:
+      - DOCKER=1
+    command:
+      - python
+      - /app/demo_daemon.py
+  #sqsdaemon:
+    #image: jchexpl/daemon
+    #build:
+      #context: ./docker/daemon
+    #environment:
+      #- DOCKER=1

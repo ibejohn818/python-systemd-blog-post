@@ -1,0 +1,12 @@
+---
+
+- name: install packages
+  apt:
+    name: "{{ upak }}"
+    state: latest
+
+- name: copy rc.local
+  copy:
+    src: files/rc.local
+    dest: /etc/rc.local
+    mode: 'u+x'
